@@ -62,7 +62,7 @@ class MainMenuState extends MusicBeatState
             loops++;
         }
 
-        #if sys
+        #if desktop // evitando uma tragedia de acontecer /:
         for (i in FileSystem.readDirectory("assets/images/menushit")) {
             if (i.startsWith("page") && i.endsWith(".png")) {
                 var num = Std.parseInt(i.substring(4, i.length - 4).trim());
@@ -80,6 +80,10 @@ class MainMenuState extends MusicBeatState
         spawnBG();
 
         super.create();
+	    
+	#if android
+	addVirtualPad(LEFT_FULL, A_B);
+	#end
     }
 
     var canType:Bool = true;
