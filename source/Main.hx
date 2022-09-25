@@ -73,9 +73,8 @@ class Main extends Sprite
 	
 		ClientPrefs.loadDefaultKeys();
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
-        FlxG.game.setFilters([Shaders.toCamera(new Shaders.CrtTv().shader)]);
-
-		#if !mobile
+            //  FlxG.game.setFilters([Shaders.toCamera(new Shaders.CrtTv().shader)]);
+	
 		fpsVar = new FPS(10, 3, 0xFFFFFF);
 		addChild(fpsVar);
 		Lib.current.stage.align = "tl";
@@ -83,15 +82,13 @@ class Main extends Sprite
 		if(fpsVar != null) {
 			fpsVar.visible = ClientPrefs.showFPS;
 		}
-		#end
 
 		#if html5
 		FlxG.autoPause = false;
 		FlxG.mouse.visible = false;
 		#end
 	}
-
-    public override function __enterFrame(deltaTime:Int) {
+   /*public override function __enterFrame(deltaTime:Int) {
         update(deltaTime * 0.001);
         super.__enterFrame(deltaTime);
     }
@@ -101,4 +98,4 @@ class Main extends Sprite
             i(elapsed);
         }
     }
-}
+}*/
