@@ -191,7 +191,10 @@ class CreditsState extends MusicBeatState
 		#end
 			
 		super.create();	
-	}        
+		
+	}		
+		
+	    
 			
 
 	var quitting:Bool = false;
