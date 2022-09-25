@@ -366,7 +366,7 @@ class FreeplayState extends MusicBeatState
 				poop = songLowercase;
 				curDifficulty = 1;
 				trace('Couldnt find file');
-			}*/
+			}
 			trace(poop);
 
 			PlayState.SONG = Song.loadFromJson(poop, songLowercase);
