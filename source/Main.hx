@@ -20,7 +20,7 @@ class Main extends Sprite
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 	public static var fpsVar:FPS;
 
-    public static var updateShaders:Array<Float->Void> = [];
+        public static var updateShaders:Array<Float->Void> = [];
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
@@ -73,7 +73,7 @@ class Main extends Sprite
 	
 		ClientPrefs.loadDefaultKeys();
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
-            //  FlxG.game.setFilters([Shaders.toCamera(new Shaders.CrtTv().shader)]);
+                FlxG.game.setFilters([Shaders.toCamera(new Shaders.CrtTv().shader)]);
 	
 		fpsVar = new FPS(10, 3, 0xFFFFFF);
 		addChild(fpsVar);
@@ -88,7 +88,7 @@ class Main extends Sprite
 		FlxG.mouse.visible = false;
 		#end
 	}
-   /*public override function __enterFrame(deltaTime:Int) {
+   public override function __enterFrame(deltaTime:Int) {
         update(deltaTime * 0.001);
         super.__enterFrame(deltaTime);
     }
@@ -98,4 +98,4 @@ class Main extends Sprite
             i(elapsed);
         }
     }
-}*/
+}
