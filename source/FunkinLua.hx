@@ -44,9 +44,9 @@ import Discord;
 
 
 class FunkinLua {
-	public static var Function_Stop:Dynamic = 1;
-	public static var Function_Continue:Dynamic = 0;
-	public static var Function_StopLua:Dynamic = 2;
+	public static var Function_Stop:Dynamic = #if android "Function_Stop" #else 1 #end;
+	public static var Function_Continue:Dynamic = #if android "Function_Continue" #else 0 #end;
+	public static var Function_StopLua:Dynamic = #if android "Function_Continue" #else 0 #end;
 
 	public var errorHandler:String->Void;
 	#if LUA_ALLOWED
@@ -93,7 +93,7 @@ class FunkinLua {
 		accessedProps = new Map<String, Dynamic>();
 		#end
 
-        set('native', true);
+                set('native', true);
 
 		// Lua shit
 		set('Function_StopLua', Function_StopLua);
@@ -1738,7 +1738,7 @@ class FunkinLua {
 			path = Paths.modsJson(Paths.formatToSongPath(PlayState.SONG.song) + '/' + dialogueFile);
 			if(!FileSystem.exists(path))
 			#end
-				path = Paths.json(Paths.formatToSongPath(PlayState.SONG.song) + '/' + dialogueFile);
+				path = SUtil.getPath() + Paths.json(Paths.formatToSongPath(PlayState.SONG.song) + '/' + dialogueFile);
 
 			luaTrace('Trying to load dialogue: ' + path);
 
