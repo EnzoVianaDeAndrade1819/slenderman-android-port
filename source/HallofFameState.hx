@@ -89,6 +89,10 @@ class HallofFameState extends MusicBeatState
 		hallHeads.scale.y = 0.5;
 		add(hallHeads);
 		daAngle(-10);
+		
+		#if android
+		addVirtualPad(LEFT_RIGHT, A_B);
+		#end
 	}
 
 	override function update(elapsed:Float)
@@ -108,7 +112,7 @@ class HallofFameState extends MusicBeatState
 
 		if (canChange)
 		{
-			if (FlxG.keys.justPressed.RIGHT)
+			if (controls.UI_RIGHT_P)
 			{
 				hasClicked = true;
 				FlxG.sound.play(Paths.sound('click-start'));
@@ -118,7 +122,7 @@ class HallofFameState extends MusicBeatState
 				else
 					selectedP++;
 			}
-			if (FlxG.keys.justPressed.LEFT)
+			if (controls.UI_LEFT_P)
 			{
 				hasClicked = true;
 				FlxG.sound.play(Paths.sound('click-start'));
@@ -131,7 +135,7 @@ class HallofFameState extends MusicBeatState
 
 			if(hasClicked)
 			{
-				if (FlxG.keys.justReleased.LEFT || FlxG.keys.justReleased.RIGHT)
+				if (controls.UI_RIGHT_P || controls.UI_RIGHT_P)
 				{
 					hasClicked = false;
 					canChange = false;
