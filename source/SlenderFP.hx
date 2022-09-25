@@ -84,6 +84,10 @@ class SlenderFP extends MusicBeatState
         alpha();
 
         super.create();
+	    
+	    #if android
+		addVirtualPad(LEFT_FULL, A_B);
+		#end
     }
 
     public function alpha(nil:FlxTween = null) {
